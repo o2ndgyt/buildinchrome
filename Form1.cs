@@ -12,9 +12,7 @@ namespace BuildinChrome
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
-            timer1.Interval = 1000 * fn.oConfigSetup.Shutdown;
-            timer1.Enabled = true;
-
+        
             CefSettings cfsettings = new CefSettings() { UserAgent = fn.oConfigSetup.UserAgent, IgnoreCertificateErrors = true };
 
             Cef.Initialize(cfsettings);
@@ -39,14 +37,12 @@ namespace BuildinChrome
         }
         private void SetIsLoading(bool isLoading)
         {
-            Text = isLoading ? "Page is loading..." : "Page loaded.";
+         Text = isLoading ? "Page is loading..." : "Page loaded.";
         }
 
-        private void timer1_Tick(object sender, System.EventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             browser.Dispose();
-            Cef.Shutdown();
-            Close();
         }
     }
 }

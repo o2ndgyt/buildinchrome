@@ -11,6 +11,5 @@ namespace BuildinChrome
         public string Url;
         public string UserAgent;
         public int Image;
-        public int Shutdown;
     }
 }

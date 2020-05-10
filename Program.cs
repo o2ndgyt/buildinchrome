@@ -12,6 +12,8 @@ namespace BuildinChrome
         [STAThread]
         static void Main()
         {
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
+
             Cef.EnableHighDPISupport();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -19,5 +21,9 @@ namespace BuildinChrome
                 Application.Run(new Form1());
         }
 
+        static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            Cef.Shutdown();
+        }
     }
 }
